@@ -1,0 +1,113 @@
+conky.config = {
+--==============================================================================
+--                                 conkyrc_grey
+
+--  author  : SLK
+--  version : v2011011601
+--  license : Distributed under the terms of GNU GPL version 2 or later
+
+--==============================================================================
+
+	background = true,
+	update_interval = 1,
+
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	temperature_unit = 'celsius',
+
+	double_buffer = true,
+	no_buffers = true,
+	text_buffer_size = 4096,
+
+	own_window = true,
+	own_window_transparent = true,
+	own_window_type = 'dock',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_argb_visual = true,
+	own_window_argb_value = 100,
+	minimum_width = 550, minimum_height = 850,
+	gap_x = 3250,
+	gap_y = 1250,
+
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+
+	override_utf8_locale = true,
+	use_xft = true,
+	font = 'caviar dreams:size=8',
+	xftalpha = 0.5,
+	uppercase = false,
+
+	default_color = '#000000',
+	color1 = '#222222',
+	color2 = '#555555',
+	color3 = '#777777',
+	color4 = '#999999',
+
+	titlefont = 'Ubuntu:bold:size=10',
+
+	textfont = 'Ubuntu:bold:size=8',
+
+
+	lua_load = 'conky_grey.lua',
+	lua_draw_hook_post = 'main',
+
+};
+
+conky.text = [[
+${voffset 20}
+${goto 90}${alignr}${color2}${font Ubuntu:bold:size=20}${time %A}
+${color2}${font Ubuntu:bold:size=16}${alignr}${time %b}${color3}${time %e}${color2}, ${time %Y}
+${voffset 20}
+${goto 90}${font titlefont}${color}CPU
+${goto 130}${font textfont}${color1}${top name 1}${alignr}${top cpu 1}%
+${goto 130}${color2}${top name 2}${alignr}${top cpu 2}%
+${goto 130}${color3}${top name 3}${alignr}${top cpu 3}%
+${goto 130}${cpugraph 60,430 666666 666666 -t -l}
+
+${voffset 25}
+${goto 90}${font titlefont}${color}MEM
+${goto 130}${font textfont}${color1}${top_mem name 1}${alignr}${top_mem mem 1}%
+${goto 130}${font textfont}${color2}${top_mem name 2}${alignr}${top_mem mem 2}%
+${goto 130}${font textfont}${color3}${top_mem name 3}${alignr}${top_mem mem 3}%
+
+${voffset 70}
+${goto 90}${font titlefont}${color}DSK
+${goto 130}${voffset 2}${font textfont}${color1}~/Workshop ${alignr}${color2}${execi 60  du -sh /home/mitchell/Workshop/ 2>/dev/null | awk '{print $1}'}iB
+${goto 130}${voffset 2}${font textfont}${color1}/ ${alignr}${color2}${fs_used /}
+${goto 130}${diskiograph 60,430 666666 666666 -t}${voffset -30}
+
+${voffset 0}
+${goto 90}${font titlefont}${color}NETWORK
+${goto 130}${font textfont}${color1}WiFi IP:${alignr}${color2}${addr wlp2s0}
+${goto 130}${font textfont}${color1}Ethernet IP:${alignr}${color2}${alignr}${addr eth0}
+${goto 130}${font textfont}${color}Open Ports: ${alignr}${color2}${tcp_portmon 1 65535 count}
+
+${voffset -20}
+${if_up wlp2s0}${font textfont}${color2}${alignr}${upspeed wlp2s0}
+${voffset -15}${goto 130}${upspeedgraph wlp2s0 60,430 333333 000000 -t -l}
+${voffset -4}${goto 130}${downspeedgraph wlp2s0 -60,430 555555 777777 -t -l}
+${voffset 10}${font textfont}${color2}${alignr}${downspeed wlp2s0}
+${endif}
+${goto 90}${if_up eth0}${font textfont}${color2}${alignr}${upspeed eth0}
+${voffset -15}${goto 130}${upspeedgraph eth0 60,430 333333 000000 -t -l}
+${voffset -4}${goto 130}${downspeedgraph eth0 -60,430 555555 777777 -t -l}
+${voffset 10}${font textfont}${color2}${alignr}${downspeed eth0}
+${endif}
+
+${voffset -40}${goto 90}${font titlefont}${color}${offset 10}IP${alignr}DPORT${color2}
+${goto 130}${font textfont}${tcp_portmon 1 65535 rip  0}${alignr 1}${tcp_portmon 1 65535 rport  0}
+${goto 130}${font textfont}${tcp_portmon 1 65535 rip  1}${alignr 1}${tcp_portmon 1 65535 rport  1}
+${goto 130}${font textfont}${tcp_portmon 1 65535 rip  2}${alignr 1}${tcp_portmon 1 65535 rport  2}
+${goto 130}${font textfont}${tcp_portmon 1 65535 rip  3}${alignr 1}${tcp_portmon 1 65535 rport  3}
+${goto 130}${font textfont}${tcp_portmon 1 65535 rip  4}${alignr 1}${tcp_portmon 1 65535 rport  4}
+${goto 130}${font textfont}${tcp_portmon 1 65535 rip  5}${alignr 1}${tcp_portmon 1 65535 rport  5}
+${goto 130}${font textfont}${tcp_portmon 1 65535 rip  6}${alignr 1}${tcp_portmon 1 65535 rport  6}
+${goto 130}${font textfont}${tcp_portmon 1 65535 rip  7}${alignr 1}${tcp_portmon 1 65535 rport  7}
+${goto 130}${font textfont}${tcp_portmon 1 65535 rip  8}${alignr 1}${tcp_portmon 1 65535 rport  8}
+${goto 130}${font textfont}${tcp_portmon 1 65535 rip  9}${alignr 1}${tcp_portmon 1 65535 rport  9}
+${goto 130}${font textfont}${tcp_portmon 1 65535 rip  10}${alignr 1}${tcp_portmon 1 65535 rport  10}
+${goto 130}${font textfont}${tcp_portmon 1 65535 rip  11}${alignr 1}${tcp_portmon 1 65535 rport  11}
+]];
