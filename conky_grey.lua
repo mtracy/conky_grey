@@ -198,27 +198,6 @@ gauge = {
     caption_weight=1,              caption_size=0.0,
     caption_fg_colour=0xFFFFFF,    caption_fg_alpha=0.5,
 },
---{
-    --name='fs_used_perc',           arg='/home/mitchell/Workshop/',                max_value=100,
-    --x=85,                          y=690,
-    --graph_radius=36,
-    --graph_thickness=18,
-    --graph_start_angle=180,
-    --graph_unit_angle=2.7,          graph_unit_thickness=2.7,
-    --graph_bg_colour=0xffffff,      graph_bg_alpha=0.1,
-    --graph_fg_colour=0xFFFFFF,      graph_fg_alpha=0.5,
-    --hand_fg_colour=0xEF5A29,       hand_fg_alpha=0.0,
-    --txt_radius=20,
-    --txt_weight=0,                  txt_size=0.0,
-    --txt_fg_colour=0xFFFFFF,        txt_fg_alpha=0.5,
-    --graduation_radius=28,
-    --graduation_thickness=0,        graduation_mark_thickness=1,
-    --graduation_unit_angle=27,
-    --graduation_fg_colour=0xFFFFFF, graduation_fg_alpha=0.3,
-    --caption='/home/mitchell/Workshop/',
-    --caption_weight=1,              caption_size=16.0,
-    --caption_fg_colour=0xFFFFFF,    caption_fg_alpha=0.5,
---},
 }
 
 -------------------------------------------------------------------------------
