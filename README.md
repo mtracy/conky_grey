@@ -10,7 +10,7 @@ Lastly, **this has been setup for use with a 4K monitor**.
 1. Install conky
 ```sudo apt-get install conky-all```
 2. Run conky
-```conky -c /path/to/this/repo/conkyrc_grey```
+```cd  /path/to/this/repo/ && conky -c conkyrc_grey```
 
 ## Note 1
 
